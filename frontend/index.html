@@ -48,6 +48,36 @@
         </div>
     </div>
 
+    <!-- PERMISSIONS SCREEN -->
+    <div id="permissions-screen" class="screen">
+        <div class="splash-content">
+            <div class="logo-container">
+                <div class="logo-icon">🔐</div>
+                <h2 class="perm-title" data-i18n="perm_title">अनुमतियाँ</h2>
+                <p class="perm-subtitle" data-i18n="perm_subtitle">बेहतर अनुभव के लिए कृपया अनुमति दें</p>
+            </div>
+            <div class="perm-list">
+                <div class="perm-item">
+                    <span class="perm-icon">🎤</span>
+                    <div class="perm-info">
+                        <div class="perm-name" data-i18n="perm_mic">माइक्रोफोन</div>
+                        <div class="perm-desc" data-i18n="perm_mic_why">आपकी आवाज़ सुनने के लिए</div>
+                    </div>
+                    <span id="mic-perm-status" class="perm-status">⏳</span>
+                </div>
+                <div class="perm-item">
+                    <span class="perm-icon">📍</span>
+                    <div class="perm-info">
+                        <div class="perm-name" data-i18n="perm_loc">स्थान</div>
+                        <div class="perm-desc" data-i18n="perm_loc_why">आपके क्षेत्र का मौसम दिखाने के लिए</div>
+                    </div>
+                    <span id="loc-perm-status" class="perm-status">⏳</span>
+                </div>
+            </div>
+            <button id="skip-permissions" class="skip-btn" data-i18n="perm_skip">छोड़ें →</button>
+        </div>
+    </div>
+
     <!-- MAIN APP SCREEN -->
     <div id="main-screen" class="screen">
         <header class="top-bar">
@@ -83,11 +113,29 @@
         </nav>
 
         <main class="content-area" id="content-area">
+            <!-- WELCOME / DASHBOARD -->
             <div id="welcome-section" class="section active">
-                <div class="welcome-card">
+                <div class="welcome-card animate-in">
                     <p class="welcome-text" data-i18n="welcome">नमस्ते! मैं किसानमित्र हूँ। नीचे माइक दबाकर अपना सवाल पूछें।</p>
                 </div>
+                <div class="quick-actions">
+                    <p class="quick-title" data-i18n="try_asking">ये पूछकर देखें:</p>
+                    <button class="quick-action animate-in" data-query="mere tamatar mein keede lag rahe hain kya karun">
+                        <span>🐛</span> <span data-i18n="qa_pest">मेरे टमाटर में कीड़े लगे हैं</span>
+                    </button>
+                    <button class="quick-action animate-in" data-query="gehun ki buvai kab karni chahiye">
+                        <span>🌾</span> <span data-i18n="qa_sowing">गेहूँ की बुवाई कब करें?</span>
+                    </button>
+                    <button class="quick-action animate-in" data-query="aaj mausam kaisa rahega khet ke liye">
+                        <span>🌦️</span> <span data-i18n="qa_weather">आज मौसम कैसा रहेगा?</span>
+                    </button>
+                </div>
+                <div class="tip-card animate-in">
+                    <span class="tip-icon">💡</span>
+                    <p class="tip-text" data-i18n="tip">माइक बटन दबाएं और धीरे-धीरे बोलें। किसानमित्र आपकी बात सुनकर जवाब देगा।</p>
+                </div>
             </div>
+
             <div id="response-section" class="section"></div>
             <div id="prices-section" class="section">
                 <div class="section-header"><h2 data-i18n="prices_title">📊 आज के भाव</h2></div>
@@ -103,7 +151,7 @@
 
         <div class="voice-area">
             <div id="voice-status" class="voice-status" data-i18n="voice_tap">माइक दबाएं और बोलें</div>
-            <button id="mic-button" class="mic-button" aria-label="Speak">
+            <button id="mic-button" class="mic-button pulse-ring" aria-label="Speak">
                 <svg class="mic-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
                     <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>

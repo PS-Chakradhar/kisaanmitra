@@ -1,7 +1,7 @@
 /**
  * KisaanMitra - Service Worker (Offline Support)
  */
-const CACHE_NAME = 'kisaanmitra-v3';
+const CACHE_NAME = 'kisaanmitra-v4';
 const ASSETS_TO_CACHE = [
     '/', '/index.html', '/css/style.css',
     '/js/i18n.js', '/js/speech.js', '/js/api.js', '/js/app.js',
