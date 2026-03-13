@@ -20,13 +20,14 @@ def get_agricultural_advice(query: str, language: str = 'hi') -> dict:
     try:
         lang_name = Config.LANGUAGES.get(language, {}).get('name', 'Hindi')
         prompt = f"""
-        A farmer is asking the following question in {lang_name}:
-        "{query}"
-        
-        Please respond in {lang_name} language only.
-        Provide practical farming advice.
-        Remember to format your response as the JSON structure specified.
-        """
+	Please respond in {lang_name} language ONLY.
+	A farmer is asking the following question in {lang_name}:
+	"{query}"
+
+	Please respond in {lang_name} language only.
+	Provide practical farming advice.
+	Remember to format your response as the JSON structure specified.
+	"""
 
         response = model.generate_content(prompt)
         response_text = response.text.strip()
@@ -64,6 +65,7 @@ def get_agricultural_advice(query: str, language: str = 'hi') -> dict:
         fallback_messages = {
             'hi': 'माफ़ कीजिए, अभी जवाब देने में दिक्कत हो रही है। कृपया दोबारा कोशिश करें।',
             'kn': 'ಕ್ಷಮಿಸಿ, ಈಗ ಉತ್ತರಿಸಲು ಸಮಸ್ಯೆ ಆಗುತ್ತಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.',
+            'te': 'క్షమించండి, ఇప్పుడు సమాధానం ఇవ్వడంలో సమస్య ఉంది. దయచేసి మళ్ళీ ప్రయత్నించండి.',
             'en': 'Sorry, having trouble responding right now. Please try again.',
             'ta': 'மன்னிக்கவும், இப்போது பதிலளிக்க சிக்கல் உள்ளது. மீண்டும் முயற்சிக்கவும்.'
         }

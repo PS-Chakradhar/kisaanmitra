@@ -2,8 +2,8 @@
  * KisaanMitra - API Communication Layer
  */
 const API = {
-    // CHANGE THIS when deployed
-    BASE_URL: 'http://localhost:5000/api',
+    // Live Cloud Backend! 🚀
+    BASE_URL: 'https://PSC03.pythonanywhere.com/api',
 
     async sendQuery(query, language = 'hi') {
         try {

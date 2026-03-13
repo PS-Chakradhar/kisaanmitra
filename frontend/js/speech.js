@@ -59,13 +59,47 @@ const SpeechEngine = {
     speak(text, langCode = 'hi-IN') {
         return new Promise((resolve) => {
             window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = langCode; utterance.rate = 0.9; utterance.pitch = 1; utterance.volume = 1;
+            
+            // Clean up text and split at punctuation for natural breathing pauses
+            let cleanText = text.replace(/[\*`#]/g, "");
+            // Match periods, commas, question marks, exclamations, newlines, pipes, and Hindi full stops (।)
+            let chunks = cleanText.replace(/([.,!?\n\|।]+)/g, "$1|~|").split("|~|").map(c => c.trim()).filter(Boolean);
+            
             const voices = window.speechSynthesis.getVoices();
             const matched = voices.find(v => v.lang.startsWith(langCode.split('-')[0]));
-            if (matched) utterance.voice = matched;
-            utterance.onend = resolve; utterance.onerror = resolve;
-            window.speechSynthesis.speak(utterance);
+            let currentIndex = 0;
+
+            const speakNextChunk = () => {
+                if (currentIndex >= chunks.length) {
+                    resolve();
+                    return;
+                }
+
+                const chunkText = chunks[currentIndex];
+                const utterance = new SpeechSynthesisUtterance(chunkText);
+                utterance.lang = langCode; 
+                utterance.rate = 0.9; 
+                utterance.pitch = 1; 
+                utterance.volume = 1;
+                if (matched) utterance.voice = matched;
+                
+                utterance.onend = () => {
+                    let delay = 250; // default breath delay
+                    if (chunkText.endsWith(',') || chunkText.endsWith('،')) delay = 150; // shorter for comma
+                    if (chunkText.endsWith('.') || chunkText.endsWith('!') || chunkText.endsWith('?') || chunkText.endsWith('।')) delay = 400; // longer for full stop
+                    
+                    currentIndex++;
+                    setTimeout(speakNextChunk, delay);
+                };
+                utterance.onerror = () => {
+                    currentIndex++;
+                    speakNextChunk(); // Keep going even if a chunk fails
+                };
+                
+                window.speechSynthesis.speak(utterance);
+            };
+
+            speakNextChunk();
         });
     },
 

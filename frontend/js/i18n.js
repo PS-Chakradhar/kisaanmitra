@@ -51,6 +51,21 @@ const I18N = {
         steps_title: 'என்ன செய்வது:', error_no_speech: 'மன்னிக்கவும், உங்கள் குரல் கேட்கவில்லை.',
         error_network: 'இணைய சிக்கல்.',
         trend_rising: '📈 உயர்கிறது', trend_falling: '📉 குறைகிறது', trend_stable: '📊 நிலையான'
+    },
+    te: {
+        nav_ask: 'అడగండి', nav_prices: 'ధరలు', nav_weather: 'వాతావరణం', nav_calendar: 'పంటలు',
+        welcome: 'నమస్కారం! నేను కిసాన్‌మిత్ర. మైక్ నొక్కి మీ ప్రశ్న అడగండి.',
+        voice_tap: 'మైక్ నొక్కి మాట్లాడండి', voice_listening: '🎤 వింటున్నాను... మాట్లాడండి',
+        voice_processing: 'అర్థం చేసుకుంటున్నాను...', loading: 'ఆలోచిస్తున్నాను...',
+        prices_title: '📊 నేటి ధరలు', weather_title: '🌦️ నేటి వాతావరణం', calendar_title: '📅 పంట క్యాలెండర్',
+        per: 'కి', speak_again: '🔊 మళ్ళీ వినండి', steps_title: 'ఏమి చేయాలి:',
+        error_no_speech: 'క్షమించండి, మీ వాయిస్ వినబడలేదు. మళ్ళీ ప్రయత్నించండి.',
+        error_network: 'ఇంటర్నెట్ సమస్య. మళ్లీ ప్రయత్నించండి.',
+        humidity: 'తేమ', wind: 'గాలి', feels_like: 'అనిపిస్తుంది',
+        sowing: 'విత్తడం', harvest: 'కోత',
+        trend_rising: '📈 పెరుగుతోంది', trend_falling: '📉 పడిపోతోంది', trend_stable: '📊 స్థిరంగా',
+        offline_msg: 'మీరు ఆఫ్‌లైన్‌లో ఉన్నారు.',
+        season_kharif: 'ఖరీఫ్ (వానకాలం)', season_rabi: 'రబీ (శీతాకాలం)', season_zaid: 'జైద్ (వేసవి)'
     }
 };
 

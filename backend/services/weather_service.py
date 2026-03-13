@@ -89,6 +89,15 @@ def _generate_farming_advice(current: dict, language: str) -> list:
             advice.append("🌡️ ಬಿಸಿ ಹವಾಮಾನ. ಬೆಳೆಗಳ ತೇವಾಂಶ ಪರೀಕ್ಷಿಸಿ.")
         if humidity > 80:
             advice.append("💧 ಶಿಲೀಂಧ್ರ ರೋಗಗಳ ಬಗ್ಗೆ ಜಾಗರೂಕರಾಗಿರಿ.")
+    elif language == 'te':
+        if temp > 38:
+            advice.append("🌡️ ఉష్ణోగ్రత చాలా ఎక్కువగా ఉంది. సాయంత్రం నీరు పెట్టండి.")
+        elif temp > 30:
+            advice.append("🌡️ వేడి వాతావరణం. పంట తేమను తనిఖీ చేయండి.")
+        elif temp < 10:
+            advice.append("❄️ చాలా చలిగా ఉంది. పంటలను మంచు నుండి రక్షించండి.")
+        if humidity > 80:
+            advice.append("💧 ఫంగల్ వ్యాధుల పట్ల జాగ్రత్తగా ఉండండి.")
     else:
         if temp > 38:
             advice.append("🌡️ Very high temperature. Water crops in the evening.")
@@ -103,6 +112,7 @@ def _generate_farming_advice(current: dict, language: str) -> list:
         defaults = {
             'hi': '✅ मौसम खेती के लिए अनुकूल है।',
             'kn': '✅ ಹವಾಮಾನ ಕೃಷಿಗೆ ಅನುಕೂಲಕರವಾಗಿದೆ.',
+            'te': '✅ వాతావరణం వ్యవసాయానికి అనుకూలంగా ఉంది.',
             'en': '✅ Weather conditions are favorable for farming.'
         }
         advice.append(defaults.get(language, defaults['en']))

@@ -19,13 +19,13 @@ class Config:
     # Flask Settings
     DEBUG = True
     HOST = '0.0.0.0'
-    PORT = 5000
+    PORT = 5001
 
     # CORS Settings
     CORS_ORIGINS = ['*']
 
     # Gemini Settings
-    GEMINI_MODEL = 'gemini-2.0-flash'
+    GEMINI_MODEL = 'gemini-2.5-flash'
 
     # Supported Languages
     LANGUAGES = {
@@ -52,6 +52,12 @@ class Config:
             'native_name': 'தமிழ்',
             'code': 'ta-IN',
             'greeting': 'வணக்கம்! நான் கிசான்மித்ரா. நான் எப்படி உதவ முடியும்?'
+        },
+        'te': {
+            'name': 'Telugu',
+            'native_name': 'తెలుగు',
+            'code': 'te-IN',
+            'greeting': 'నమస్కారం! నేను కిసాన్‌మిత్ర. మీకు ఎలా సహాయపడగలను?'
         }
     }
 

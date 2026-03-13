@@ -60,6 +60,7 @@ def get_price(crop_name: str, language: str = 'hi') -> dict:
     not_found_msg = {
         'hi': f'"{crop_name}" की कीमत अभी उपलब्ध नहीं है।',
         'kn': f'"{crop_name}" ಬೆಲೆ ಲಭ್ಯವಿಲ್ಲ.',
+        'te': f'"{crop_name}" ధర ప్రస్తుతం అందుబాటులో లేదు.',
         'en': f'Price for "{crop_name}" is not available right now.',
         'ta': f'"{crop_name}" விலை இப்போது கிடைக்கவில்லை.'
     }
@@ -101,6 +102,11 @@ def _get_price_advice(commodity: dict, language: str) -> str:
             'rising': '📈 ಬೆಲೆಗಳು ಹೆಚ್ಚುತ್ತಿವೆ. ಸ್ವಲ್ಪ ಕಾಯಿರಿ.',
             'falling': '📉 ಬೆಲೆಗಳು ಕಡಿಮೆಯಾಗುತ್ತಿವೆ. ಬೇಗ ಮಾರಾಟ ಮಾಡಿ.',
             'stable': '📊 ಬೆಲೆಗಳು ಸ್ಥಿರವಾಗಿವೆ.'
+        },
+        'te': {
+            'rising': '📈 ధరలు పెరుగుతున్నాయి. వేచి ఉండండి.',
+            'falling': '📉 ధరలు పడిపోతున్నాయి. త్వరగా విక్రయించండి.',
+            'stable': '📊 ధరలు స్థిరంగా ఉన్నాయి.'
         },
         'en': {
             'rising': '📈 Prices are rising. Consider waiting if you can store.',

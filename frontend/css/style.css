@@ -40,6 +40,7 @@ body {
 .language-selector { margin-top: var(--space-xl); }
 .lang-prompt { font-size: var(--font-size-sm); color: var(--text-secondary); margin-bottom: var(--space-lg); }
 .lang-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+.lang-btn:last-child:nth-child(odd) { grid-column: span 2; }
 .lang-btn {
     background: var(--bg-card); border: 2px solid var(--border); border-radius: var(--radius-md);
     padding: var(--space-lg) var(--space-md); cursor: pointer; transition: var(--transition);
