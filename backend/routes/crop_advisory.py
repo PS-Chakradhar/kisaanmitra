@@ -3,7 +3,7 @@ KisaanMitra - Crop Advisory Routes
 """
 
 from flask import Blueprint, request, jsonify
-from services.gemini_service import get_agricultural_advice, get_crop_disease_info
+from services.ai_service import get_agricultural_advice
 
 crop_bp = Blueprint('crop', __name__)
 
@@ -18,10 +18,18 @@ def handle_query():
 
         query = data['query'].strip()
         language = data.get('language', 'hi')
+        history = data.get('history', [])
+        lat = data.get('lat', 28.6139)  # Default Delhi
+        lon = data.get('lon', 77.2090)
+        
+        print(f"\n📥 Query: {query}")
+        print(f"📥 Language: {language}")
+        print(f"📥 History ({len(history)} items): {history}")
+        
         if not query:
             return jsonify({'success': False, 'error': 'Empty query'}), 400
 
-        result = get_agricultural_advice(query, language)
+        result = get_agricultural_advice(query, language, history, lat, lon)
         return jsonify(result)
 
     except Exception as e:
@@ -41,9 +49,36 @@ def diagnose_disease():
         crop = data.get('crop', 'unknown crop')
         language = data.get('language', 'hi')
 
-        result = get_crop_disease_info(symptoms, crop, language)
+        query = f"My {crop} has: {symptoms}. What disease is this and what should I do?"
+        result = get_agricultural_advice(query, language)
         return jsonify(result)
 
     except Exception as e:
         print(f"Diagnosis Error: {str(e)}")
         return jsonify({'success': False, 'error': 'Failed to diagnose'}), 500
+
+
+@crop_bp.route('/status', methods=['GET'])
+def get_ai_status():
+    """Check which AI provider is available."""
+    from config import Config
+    import requests
+    
+    ollama_available = False
+    try:
+        response = requests.get(f"{Config.OLLAMA_BASE_URL}/api/tags", timeout=2)
+        ollama_available = response.status_code == 200
+    except:
+        pass
+    
+    return jsonify({
+        'ollama': {
+            'available': ollama_available,
+            'model': Config.OLLAMA_MODEL if Config.USE_OLLAMA else None,
+            'url': Config.OLLAMA_BASE_URL
+        },
+        'gemini': {
+            'available': bool(Config.GEMINI_API_KEY),
+            'model': Config.GEMINI_MODEL if Config.GEMINI_API_KEY else None
+        }
+    })

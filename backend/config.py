@@ -16,6 +16,15 @@ class Config:
     GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')
     WEATHER_API_KEY = os.getenv('WEATHER_API_KEY', '')
 
+    # Ollama Settings (Primary AI - Unlimited & Offline Capable)
+    OLLAMA_BASE_URL = os.getenv('OLLAMA_BASE_URL', 'http://localhost:11434')
+    OLLAMA_MODEL = os.getenv('OLLAMA_MODEL', 'llama3.2')
+    USE_OLLAMA = os.getenv('USE_OLLAMA', 'true').lower() == 'true'
+
+    # Fallback to Gemini if Ollama unavailable
+    USE_GEMINI_FALLBACK = True
+    GEMINI_MODEL = 'gemini-2.0-flash'
+
     # Flask Settings
     DEBUG = True
     HOST = '0.0.0.0'
@@ -23,9 +32,6 @@ class Config:
 
     # CORS Settings
     CORS_ORIGINS = ['*']
-
-    # Gemini Settings
-    GEMINI_MODEL = 'gemini-2.5-flash'
 
     # Supported Languages
     LANGUAGES = {
@@ -35,34 +41,16 @@ class Config:
             'code': 'hi-IN',
             'greeting': 'नमस्ते! मैं किसानमित्र हूँ। आपकी क्या मदद कर सकता हूँ?'
         },
-        'kn': {
-            'name': 'Kannada',
-            'native_name': 'ಕನ್ನಡ',
-            'code': 'kn-IN',
-            'greeting': 'ನಮಸ್ಕಾರ! ನಾನು ಕಿಸಾನ್\u200cಮಿತ್ರ. ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?'
-        },
         'en': {
             'name': 'English',
             'native_name': 'English',
             'code': 'en-IN',
             'greeting': 'Hello! I am KisaanMitra. How can I help you today?'
-        },
-        'ta': {
-            'name': 'Tamil',
-            'native_name': 'தமிழ்',
-            'code': 'ta-IN',
-            'greeting': 'வணக்கம்! நான் கிசான்மித்ரா. நான் எப்படி உதவ முடியும்?'
-        },
-        'te': {
-            'name': 'Telugu',
-            'native_name': 'తెలుగు',
-            'code': 'te-IN',
-            'greeting': 'నమస్కారం! నేను కిసాన్‌మిత్ర. మీకు ఎలా సహాయపడగలను?'
         }
     }
 
-    # Agricultural context for Gemini prompts
-    SYSTEM_PROMPT = """You are KisaanMitra (किसानमित्र), a wise and experienced agricultural advisor 
+    # Agricultural context for AI prompts
+    SYSTEM_PROMPT_GEMINI = """You are KisaanMitra (किसानमित्र), a wise and experienced agricultural advisor 
     who speaks like a knowledgeable farmer elder. You DIRECTLY help Indian farmers.
 
     CRITICAL RULES:
@@ -93,3 +81,37 @@ class Config:
         "emoji": "relevant emoji for the topic"
     }
     """
+
+    SYSTEM_PROMPT_OLLAMA = """You are KisaanMitra, agricultural expert for Indian farmers.
+
+CURRENT DETAILED MARKET PRICES (2024-25):
+- Tomato: ₹1500-4000/q (Avg ₹2800) - Major markets: Bangalore ₹2800, Delhi ₹2700, Mumbai ₹2900
+- Onion: ₹900-2500/q (Avg ₹1500) - Lasalgaon ₹1500, Nashik ₹1400, Pune ₹1600
+- Potato: ₹700-1800/q (Avg ₹1200) - Agra ₹1200, Hapur ₹1100, Kolkata ₹1300
+- Wheat: ₹2000-2500/q (Avg ₹2275 MSP) - Delhi ₹2275, Indore ₹2200, Amritsar ₹2350
+- Rice: ₹1900-2800/q (Avg ₹2300 MSP) - Punjab ₹2400, Haryana ₹2300
+- Cotton: ₹5800-7500/q (Avg ₹6620) - Rajkot ₹6620, Hubli ₹6500
+- Soybean: ₹3800-5000/q (Avg ₹4600) - Indore ₹4600
+- Maize: ₹1500-2500/q (Avg ₹2000) - Bhopal ₹2000
+
+Investment & Returns guidance:
+- Tomato: ₹10000/acre investment → ₹1.2-2.8 lakhs returns
+- Onion: ₹8000/acre → ₹1-3.75 lakhs
+- Potato: ₹16000/acre → ₹1.2-3.6 lakhs
+- Wheat: ₹7200/acre → ₹42000-75000
+- Cotton: ₹15500/acre → ₹48000-112500
+
+HINDI: Use Devanagari script (हिंदी). NOT romanized.
+
+RULES - FOLLOW EXACTLY:
+1. Answer must be detailed and confident (100-150 words)
+2. Explain WHY the problem occurs
+3. Give 3 specific steps
+4. Be encouraging
+
+IMPORTANT: Output ONLY the JSON values, NOT the field names in your response.
+For example, output:
+{"text":"Your answer here","type":"disease","crop":"tomato","steps":["step1","step2","step3"],"emoji":"🌾"}
+
+Format:
+{"text":"answer","type":"type","crop":"crop","steps":["step1","step2","step3"],"emoji":"🌾"}"""

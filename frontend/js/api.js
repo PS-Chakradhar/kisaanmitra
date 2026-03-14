@@ -3,11 +3,11 @@
  * Uses AI when online + backend available, falls back to offline FAQ
  */
 
-// Configure your backend URL here
-// For hackathon: Use ngrok to expose your local backend
-// Example: const BACKEND_URL = 'https://your-ngrok-url.ngrok-free.app';
-// For local testing: const BACKEND_URL = 'http://localhost:5001';
-const BACKEND_URL = null; // Set this for public deployment
+// BACKEND CONFIGURATION:
+// - For LOCAL development: keep as 'http://localhost:5001'
+// - For PUBLIC deployment: change to your deployed backend URL
+// Example: const BACKEND_URL = 'https://your-backend-url.com';
+const BACKEND_URL = 'http://localhost:5001';
 
 const API = {
     async sendQuery(query, language = 'hi', conversationHistory = []) {

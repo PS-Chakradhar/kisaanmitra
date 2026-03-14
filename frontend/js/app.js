@@ -352,12 +352,16 @@ async function processVoiceQuery(query) {
     }
 
     showLoading(true);
+    console.log('📤 Sending query:', query);
+    console.log('📤 History length:', conversationHistory.length);
+    console.log('📤 History:', conversationHistory);
     const result = await API.sendQuery(query, window.currentLanguage, conversationHistory);
     showLoading(false);
     if (result && result.data) {
         addResponseCard(result.data);
         conversationHistory.push({ role: 'user', content: query });
         conversationHistory.push({ role: 'assistant', content: result.data.text });
+        console.log('📥 Updated history:', conversationHistory);
         SpeechEngine.speak(result.data.text, currentSpeechCode);
     }
 }

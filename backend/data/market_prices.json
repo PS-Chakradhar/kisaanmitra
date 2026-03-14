@@ -1,1 +1,220 @@
-{"last_updated":"2026-03-13","source":"Based on Agmarknet data","commodities":[{"name_en":"Tomato","name_hi":"टमाटर","name_kn":"ಟೊಮೇಟೊ","unit":"quintal","emoji":"🍅","trend":"rising","markets":[{"name":"Bangalore (Binny Mill)","min_price":1200,"max_price":2800,"modal_price":2000},{"name":"Kolar","min_price":1000,"max_price":2500,"modal_price":1800},{"name":"Mysore","min_price":1100,"max_price":2600,"modal_price":1900}]},{"name_en":"Onion","name_hi":"प्याज","name_kn":"ಈರುಳ್ಳಿ","unit":"quintal","emoji":"🧅","trend":"stable","markets":[{"name":"Lasalgaon","min_price":800,"max_price":1600,"modal_price":1200},{"name":"Nashik","min_price":750,"max_price":1500,"modal_price":1100},{"name":"Bangalore","min_price":850,"max_price":1650,"modal_price":1250}]},{"name_en":"Potato","name_hi":"आलू","name_kn":"ಆಲೂಗಡ್ಡೆ","unit":"quintal","emoji":"🥔","trend":"falling","markets":[{"name":"Agra","min_price":500,"max_price":1000,"modal_price":750},{"name":"Indore","min_price":600,"max_price":1100,"modal_price":850},{"name":"Bangalore","min_price":700,"max_price":1200,"modal_price":950}]},{"name_en":"Rice (Paddy)","name_hi":"धान","name_kn":"ಭತ್ತ","unit":"quintal","emoji":"🌾","trend":"stable","markets":[{"name":"Karnal","min_price":2100,"max_price":2800,"modal_price":2500},{"name":"Raichur","min_price":1900,"max_price":2600,"modal_price":2300},{"name":"Davangere","min_price":2050,"max_price":2750,"modal_price":2450}]},{"name_en":"Wheat","name_hi":"गेहूँ","name_kn":"ಗೋಧಿ","unit":"quintal","emoji":"🌾","trend":"rising","markets":[{"name":"Delhi","min_price":2200,"max_price":3000,"modal_price":2600},{"name":"Indore","min_price":2100,"max_price":2900,"modal_price":2500}]},{"name_en":"Cotton","name_hi":"कपास","name_kn":"ಹತ್ತಿ","unit":"quintal","emoji":"☁️","trend":"rising","markets":[{"name":"Rajkot","min_price":6500,"max_price":7800,"modal_price":7200},{"name":"Hubli","min_price":6300,"max_price":7500,"modal_price":6900}]},{"name_en":"Chilli","name_hi":"मिर्च","name_kn":"ಮೆಣಸಿನಕಾಯಿ","unit":"quintal","emoji":"🌶️","trend":"stable","markets":[{"name":"Guntur","min_price":8000,"max_price":15000,"modal_price":12000},{"name":"Byadgi","min_price":9000,"max_price":16000,"modal_price":13000}]},{"name_en":"Banana","name_hi":"केला","name_kn":"ಬಾಳೆ ಹಣ್ಣು","unit":"quintal","emoji":"🍌","trend":"rising","markets":[{"name":"Jalgaon","min_price":800,"max_price":1500,"modal_price":1200},{"name":"Bangalore","min_price":900,"max_price":1600,"modal_price":1300}]},{"name_en":"Mango","name_hi":"आम","name_kn":"ಮಾವಿನ ಹಣ್ಣು","unit":"quintal","emoji":"🥭","trend":"rising","markets":[{"name":"Ratnagiri","min_price":3000,"max_price":8000,"modal_price":5500},{"name":"Bangalore","min_price":2800,"max_price":7000,"modal_price":5000}]},{"name_en":"Sugarcane","name_hi":"गन्ना","name_kn":"ಕಬ್ಬು","unit":"quintal","emoji":"🎋","trend":"stable","markets":[{"name":"Kolhapur","min_price":310,"max_price":350,"modal_price":330},{"name":"Belgaum","min_price":305,"max_price":345,"modal_price":325}]}]}
+{
+  "last_updated": "2026-03-14",
+  "source": "Based on Agmarknet & e-NAM data",
+  "note": "Prices are average market rates. Actual prices vary by region, quality, and season.",
+  "commodities": [
+    {
+      "name_en": "Tomato",
+      "name_hi": "टमाटर",
+      "unit": "quintal",
+      "emoji": "🍅",
+      "trend": "rising",
+      "season": "Oct-Nov (Rabi), June-July (Kharif)",
+      "tips": {
+        "hi": "सुबह की सब्जी मंडी में तुरंत बेचें। गर्मियों में भाव कम होते हैं।",
+        "en": "Sell immediately in morning markets. Prices drop in summers."
+      },
+      "investment": {
+        "hi": "1 एकड़ के लिए: बीज ₹2000, खाद ₹5000, सिंचाई ₹3000 = कुल ₹10000",
+        "en": "For 1 acre: Seeds ₹2000, Fertilizer ₹5000, Irrigation ₹3000 = Total ₹10000"
+      },
+      "returns": {
+        "hi": "1 एकड़ से 80-100 क्विंटल, ₹1500-2800/क्विंटल = ₹1.2-2.8 लाख",
+        "en": "80-100 quintals from 1 acre, ₹1500-2800/quintal = ₹1.2-2.8 lakhs"
+      },
+      "markets": [
+        {"market": "Bangalore (Binny Mill)", "min_price": 1500, "max_price": 4000, "modal_price": 2800},
+        {"market": "Kolar", "min_price": 1200, "max_price": 3500, "modal_price": 2500},
+        {"market": "Mysore", "min_price": 1300, "max_price": 3600, "modal_price": 2600},
+        {"market": "Delhi (Azadpur)", "min_price": 1500, "max_price": 3800, "modal_price": 2700},
+        {"market": "Mumbai (Vashi)", "min_price": 1600, "max_price": 4000, "modal_price": 2900}
+      ]
+    },
+    {
+      "name_en": "Onion",
+      "name_hi": "प्याज",
+      "unit": "quintal",
+      "emoji": "🧅",
+      "trend": "stable",
+      "season": "Rabi (Oct-Mar), Kharif (June-Sept)",
+      "tips": {
+        "hi": "कटाई के बाद 2-3 दिन धूप में सुखाएं। स्टोर करके बाद में बेचें।",
+        "en": "Dry in sun for 2-3 days after harvest. Store and sell later."
+      },
+      "investment": {
+        "hi": "1 एकड़ के लिए: बीज ₹1500, खाद ₹4000, सिंचाई ₹2500 = कुल ₹8000",
+        "en": "For 1 acre: Seeds ₹1500, Fertilizer ₹4000, Irrigation ₹2500 = Total ₹8000"
+      },
+      "returns": {
+        "hi": "1 एकड़ से 100-150 क्विंटल, ₹1000-2500/क्विंटल = ₹1-3.75 लाख",
+        "en": "100-150 quintals from 1 acre, ₹1000-2500/quintal = ₹1-3.75 lakhs"
+      },
+      "markets": [
+        {"market": "Lasalgaon (Nashik)", "min_price": 1000, "max_price": 2500, "modal_price": 1500},
+        {"market": "Nashik", "min_price": 900, "max_price": 2400, "modal_price": 1400},
+        {"market": "Pune", "min_price": 1000, "max_price": 2600, "modal_price": 1600},
+        {"market": "Bangalore", "min_price": 1200, "max_price": 2800, "modal_price": 1800},
+        {"market": "Delhi", "min_price": 1100, "max_price": 2700, "modal_price": 1700}
+      ]
+    },
+    {
+      "name_en": "Potato",
+      "name_hi": "आलू",
+      "unit": "quintal",
+      "emoji": "🥔",
+      "trend": "falling",
+      "season": "Rabi (Oct-Mar), Round the year",
+      "tips": {
+        "hi": "बड़े आलू बेहतर दाम मिलते हैं। ठंडे भंडारण में रखें।",
+        "en": "Large potatoes get better prices. Store in cold storage."
+      },
+      "investment": {
+        "hi": "1 एकड़ के लिए: बीज ₹8000, खाद ₹5000, सिंचाई ₹3000 = कुल ₹16000",
+        "en": "For 1 acre: Seeds ₹8000, Fertilizer ₹5000, Irrigation ₹3000 = Total ₹16000"
+      },
+      "returns": {
+        "hi": "1 एकड़ से 150-200 क्विंटल, ₹800-1800/क्विंटल = ₹1.2-3.6 लाख",
+        "en": "150-200 quintals from 1 acre, ₹800-1800/quintal = ₹1.2-3.6 lakhs"
+      },
+      "markets": [
+        {"market": "Agra", "min_price": 800, "max_price": 1800, "modal_price": 1200},
+        {"market": "Hapur (UP)", "min_price": 700, "max_price": 1700, "modal_price": 1100},
+        {"market": "Bulandshahr", "min_price": 750, "max_price": 1750, "modal_price": 1150},
+        {"market": "Kolkata", "min_price": 900, "max_price": 1900, "modal_price": 1300},
+        {"market": "Bangalore", "min_price": 1000, "max_price": 2000, "modal_price": 1400}
+      ]
+    },
+    {
+      "name_en": "Wheat",
+      "name_hi": "गेहूँ",
+      "unit": "quintal",
+      "emoji": "🌾",
+      "trend": "stable",
+      "season": "Rabi (Oct-Apr harvest)",
+      "tips": {
+        "hi": "MSP ₹2275 से ऊपर दाम की उम्मीद कम रखें। सरकारी खरीद केंद्र में बेचें।",
+        "en": "Don't expect prices above MSP ₹2275. Sell at government centers."
+      },
+      "investment": {
+        "hi": "1 एकड़ के लिए: बीज ₹1200, खाद ₹4000, सिंचाई ₹2000 = कुल ₹7200",
+        "en": "For 1 acre: Seeds ₹1200, Fertilizer ₹4000, Irrigation ₹2000 = Total ₹7200"
+      },
+      "returns": {
+        "hi": "1 एकड़ से 20-30 क्विंटल, ₹2100-2500/क्विंटल = ₹42000-75000",
+        "en": "20-30 quintals from 1 acre, ₹2100-2500/quintal = ₹42000-75000"
+      },
+      "markets": [
+        {"market": "Delhi", "min_price": 2100, "max_price": 2500, "modal_price": 2275},
+        {"market": "Indore (MP)", "min_price": 2000, "max_price": 2450, "modal_price": 2200},
+        {"market": "Amritsar (Punjab)", "min_price": 2150, "max_price": 2550, "modal_price": 2350},
+        {"market": "Ludhiana", "min_price": 2100, "max_price": 2500, "modal_price": 2300},
+        {"market": "Bhopal", "min_price": 2050, "max_price": 2400, "modal_price": 2200}
+      ]
+    },
+    {
+      "name_en": "Rice (Paddy)",
+      "name_hi": "धान/चावल",
+      "unit": "quintal",
+      "emoji": "🍚",
+      "trend": "rising",
+      "season": "Kharif (June-Oct), Rabi (Nov-Mar)",
+      "tips": {
+        "hi": "सरकारी खरीद केंद्र (MSP ₹2300) में बेचें। DM आधारित किस्में बेहतर दाम।",
+        "en": "Sell at government centers (MSP ₹2300). DM-based varieties get better prices."
+      },
+      "investment": {
+        "hi": "1 एकड़ के लिए: बीज ₹1500, खाद ₹5000, सिंचाई ₹3000 = कुल ₹9500",
+        "en": "For 1 acre: Seeds ₹1500, Fertilizer ₹5000, Irrigation ₹3000 = Total ₹9500"
+      },
+      "returns": {
+        "hi": "1 एकड़ से 25-40 क्विंटल, ₹2000-2800/क्विंटल = ₹50000-112000",
+        "en": "25-40 quintals from 1 acre, ₹2000-2800/quintal = ₹50000-112000"
+      },
+      "markets": [
+        {"market": "Amritsar (Punjab)", "min_price": 2100, "max_price": 2800, "modal_price": 2400},
+        {"market": "Hisar (Haryana)", "min_price": 2000, "max_price": 2700, "modal_price": 2300},
+        {"market": "Raichur (Karnataka)", "min_price": 1900, "max_price": 2600, "modal_price": 2200},
+        {"market": "Davangere", "min_price": 2000, "max_price": 2700, "modal_price": 2300},
+        {"market": "Bhubaneswar (Odisha)", "min_price": 1950, "max_price": 2650, "modal_price": 2250}
+      ]
+    },
+    {
+      "name_en": "Cotton",
+      "name_hi": "कपास",
+      "unit": "quintal",
+      "emoji": "☁️",
+      "trend": "rising",
+      "season": "Kharif (Oct-Jan)",
+      "tips": {
+        "hi": "बीटी कॉटन की किस्में ज्यादा उपज दें। कटाई के बाद सुखाकर बेचें।",
+        "en": "BT Cotton varieties give higher yield. Dry after harvest before selling."
+      },
+      "investment": {
+        "hi": "1 एकड़ के लिए: बीज ₹1500, खाद ₹6000, कीटनाशक ₹8000 = कुल ₹15500",
+        "en": "For 1 acre: Seeds ₹1500, Fertilizer ₹6000, Pesticides ₹8000 = Total ₹15500"
+      },
+      "returns": {
+        "hi": "1 एकड़ से 8-15 क्विंटल, ₹6000-7500/क्विंटल = ₹48000-112500",
+        "en": "8-15 quintals from 1 acre, ₹6000-7500/quintal = ₹48000-112500"
+      },
+      "markets": [
+        {"market": "Rajkot (Gujarat)", "min_price": 6000, "max_price": 7500, "modal_price": 6620},
+        {"market": "Hubli (Karnataka)", "min_price": 5800, "max_price": 7200, "modal_price": 6500},
+        {"market": "Ahmednagar (Maharashtra)", "min_price": 5900, "max_price": 7400, "modal_price": 6600},
+        {"market": "Madhya Pradesh", "min_price": 5700, "max_price": 7100, "modal_price": 6400}
+      ]
+    },
+    {
+      "name_en": "Soybean",
+      "name_hi": "सोयाबीन",
+      "unit": "quintal",
+      "emoji": "🫘",
+      "trend": "falling",
+      "season": "Kharif (June-Oct)",
+      "tips": {
+        "hi": "कटाई के बाद तुरंत बेचें। नहीं तो कीड़े लग सकते हैं।",
+        "en": "Sell immediately after harvest to avoid pest infestation."
+      },
+      "investment": {
+        "hi": "1 एकड़ के लिए: बीज ₹2500, खाद ₹3500, सिंचाई ₹2000 = कुल ₹8000",
+        "en": "For 1 acre: Seeds ₹2500, Fertilizer ₹3500, Irrigation ₹2000 = Total ₹8000"
+      },
+      "returns": {
+        "hi": "1 एकड़ से 8-12 क्विंटल, ₹4000-5000/क्विंटल = ₹32000-60000",
+        "en": "8-12 quintals from 1 acre, ₹4000-5000/quintal = ₹32000-60000"
+      },
+      "markets": [
+        {"market": "Indore (MP)", "min_price": 4000, "max_price": 5000, "modal_price": 4600},
+        {"market": "Ujjain", "min_price": 3900, "max_price": 4900, "modal_price": 4500},
+        {"market": "Kota (Rajasthan)", "min_price": 3800, "max_price": 4800, "modal_price": 4400},
+        {"market": "Nagpur (Maharashtra)", "min_price": 4000, "max_price": 5100, "modal_price": 4700}
+      ]
+    },
+    {
+      "name_en": "Maize",
+      "name_hi": "मक्का",
+      "unit": "quintal",
+      "emoji": "🌽",
+      "trend": "rising",
+      "season": "Kharif (June-Oct), Rabi (Nov-Feb)",
+      "tips": {
+        "hi": "सिंचित क्षेत्रों में ज्यादा उपज। सुखाकर 12% नमी से कम करके बेचें।",
+        "en": "Higher yield in irrigated areas. Dry to below 12% moisture before selling."
+      },
+      "investment": {
+        "hi": "1 एकड़ के लिए: बीज ₹1500, खाद ₹4000, सिंचाई ₹2500 = कुल ₹8000",
+        "en": "For 1 acre: Seeds ₹1500, Fertilizer ₹4000, Irrigation ₹2500 = Total ₹8000"
+      },
+      "returns": {
+        "hi": "1 एकड़ से 30-50 क्विंटल, ₹1500-2500/क्विंटल = ₹45000-125000",
+        "en": "30-50 quintals from 1 acre, ₹1500-2500/quintal = ₹45000-125000"
+      },
+      "markets": [
+        {"market": "Bhopal (MP)", "min_price": 1500, "max_price": 2500, "modal_price": 2000},
+        {"market": "Dharwad (Karnataka)", "min_price": 1600, "max_price": 2600, "modal_price": 2100},
+        {"market": "Davangere", "min_price": 1550, "max_price": 2550, "modal_price": 2050},
+        {"market": "Karnal (Haryana)", "min_price": 1500, "max_price": 2400, "modal_price": 1965}
+      ]
+    }
+  ]
+}
