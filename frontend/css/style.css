@@ -198,6 +198,21 @@ body {
     padding: var(--space-md) var(--space-lg) var(--space-xl); text-align: center;
     z-index: 10;
 }
+.text-input-area {
+    display: flex; gap: var(--space-sm); margin-bottom: var(--space-md); max-width: 500px; margin-left: auto; margin-right: auto;
+}
+.text-query-input {
+    flex: 1; padding: 14px 18px; border-radius: 28px;
+    border: 2px solid var(--green-primary); background: var(--bg-card); color: var(--text-primary);
+    font-size: var(--font-size-md); outline: none; font-family: inherit; min-width: 250px;
+}
+.text-query-input:focus { border-color: var(--green-primary); background: var(--bg-card-hover); }
+.text-submit-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--green-primary); border: none; color: var(--bg-primary);
+    font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.text-submit-btn:active { transform: scale(0.95); }
 .voice-status { font-size: var(--font-size-sm); color: var(--text-muted); margin-bottom: var(--space-md); max-height: 40px; overflow: hidden; }
 .mic-button {
     width: 72px; height: 72px; border-radius: var(--radius-full);

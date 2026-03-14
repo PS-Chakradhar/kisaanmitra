@@ -7,8 +7,13 @@
     "background_color": "#0a1a0d",
     "theme_color": "#1a5e1f",
     "orientation": "portrait",
+    "categories": ["agriculture", "utilities", "education"],
     "icons": [
-        { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-        { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+        { "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect fill='%231a5e1f' width='192' height='192' rx='32'/%3E%3Ctext x='96' y='130' font-size='100' text-anchor='middle'%F0%9F%8C%82%3C/text%3E%3C/svg%3E", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any maskable" },
+        { "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect fill='%231a5e1f' width='512' height='512' rx='64'/%3E%3Ctext x='256' y='350' font-size='280' text-anchor='middle'%F0%9F%8C%82%3C/text%3E%3C/svg%3E", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable" }
+    ],
+    "shortcuts": [
+        { "name": "Ask Question", "url": "/?feature=ask", "icons": [{ "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Ccircle fill='%231a5e1f' cx='48' cy='48' r='48'/%3E%3Ctext x='48' y='65' font-size='40' text-anchor='middle'%F0%9F%8C%A3%3C/text%3E%3C/svg%3E", "sizes": "96x96" }] },
+        { "name": "Market Prices", "url": "/?feature=prices", "icons": [{ "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Ccircle fill='%231a5e1f' cx='48' cy='48' r='48'/%3E%3Ctext x='48' y='65' font-size='40' text-anchor='middle'%F0%9F%8B%90%3C/text%3E%3C/svg%3E", "sizes": "96x96" }] }
     ]
 }

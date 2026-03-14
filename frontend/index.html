@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="KisaanMitra - Voice-first agricultural assistant for Indian farmers">
     <meta name="theme-color" content="#1a5e1f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="KisaanMitra">
     <title>KisaanMitra - किसानमित्र</title>
     <link rel="manifest" href="manifest.json">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect fill='%231a5e1f' width='180' height='180' rx='30'/%3E%3Ctext x='90' y='125' font-size='90' text-anchor='middle'%F0%9F%8C%82%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -23,25 +26,13 @@
             <div class="language-selector">
                 <p class="lang-prompt">अपनी भाषा चुनें / Choose Language</p>
                 <div class="lang-buttons">
-                    <button class="lang-btn" data-lang="hi" data-speech="hi-IN">
+                    <button class="lang-btn active" data-lang="hi" data-speech="hi-IN">
                         <span class="lang-native">हिंदी</span>
                         <span class="lang-english">Hindi</span>
-                    </button>
-                    <button class="lang-btn" data-lang="kn" data-speech="kn-IN">
-                        <span class="lang-native">ಕನ್ನಡ</span>
-                        <span class="lang-english">Kannada</span>
                     </button>
                     <button class="lang-btn" data-lang="en" data-speech="en-IN">
                         <span class="lang-native">English</span>
                         <span class="lang-english">English</span>
-                    </button>
-                    <button class="lang-btn" data-lang="ta" data-speech="ta-IN">
-                        <span class="lang-native">தமிழ்</span>
-                        <span class="lang-english">Tamil</span>
-                    </button>
-                    <button class="lang-btn" data-lang="te" data-speech="te-IN">
-                        <span class="lang-native">తెలుగు</span>
-                        <span class="lang-english">Telugu</span>
                     </button>
                 </div>
             </div>
@@ -150,6 +141,10 @@
         </main>
 
         <div class="voice-area">
+            <div class="text-input-area">
+                <input type="text" id="text-input" class="text-query-input" placeholder="यहाँ लिखें..." data-i18n-placeholder="type_placeholder">
+                <button id="text-submit-btn" class="text-submit-btn" aria-label="Submit">➤</button>
+            </div>
             <div id="voice-status" class="voice-status" data-i18n="voice_tap">माइक दबाएं और बोलें</div>
             <button id="mic-button" class="mic-button pulse-ring" aria-label="Speak">
                 <svg class="mic-icon" viewBox="0 0 24 24" fill="currentColor">
