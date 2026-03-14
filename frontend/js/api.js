@@ -7,7 +7,7 @@
 // - For LOCAL development: keep as 'http://localhost:5001'
 // - For PUBLIC deployment: change to your deployed backend URL
 // Example: const BACKEND_URL = 'https://your-backend-url.com';
-const BACKEND_URL = 'http://localhost:5001';
+const BACKEND_URL = 'https://amanda-numerous-pichunter-maintains.trycloudflare.com';
 
 const API = {
     async sendQuery(query, language = 'hi', conversationHistory = []) {
