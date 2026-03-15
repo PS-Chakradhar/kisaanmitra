@@ -31,14 +31,17 @@ def get_cloudflare_response(query: str, language: str, history: list = None) -> 
         prompt = f"""You are KisaanMitra, an agricultural expert for Indian farmers.
 
 {context}
-IMPORTANT: Respond in {lang_name} language ONLY.
+IMPORTANT: 
+- Respond ONLY in {lang_name} language
+- DO NOT use any English words - use only Hindi/Devanagari script
+- Write everything in Hindi including crop names and technical terms
 
 Farmer asks: {query}
 
-Give a detailed answer (2-3 sentences) followed by 3 action steps in JSON format:
-{{"text": "detailed answer here", "type": "general", "crop": "", "steps": ["step1", "step2", "step3"], "emoji": "🌾"}}
+Give a detailed answer in Hindi (2-3 sentences) followed by 3 action steps in JSON format:
+{{"text": "detailed Hindi answer", "type": "general", "crop": "", "steps": ["step1 in Hindi", "step2 in Hindi", "step3 in Hindi"], "emoji": "🌾"}}
 
-Make the answer helpful and detailed. Don't be too short."""
+Make answer helpful and detailed. Write ONLY in Hindi script - no English letters!"""
 
         url = f"https://api.cloudflare.com/client/v4/accounts/{Config.CLOUDFLARE_ACCOUNT_ID}/ai/run/@cf/meta/llama-3.1-8b-instruct"
         
@@ -56,19 +59,21 @@ Make the answer helpful and detailed. Don't be too short."""
             result = response.json()
             ai_text = result.get('result', {}).get('response', '').strip()
             
-            # Try to find JSON at the end of response
+            # Try to find JSON - look for complete JSON object
             import re
-            # Look for JSON object at the end
-            json_match = re.search(r'\{\s*["\']text["\']\s*:[^}]+\}\s*$', ai_text, re.DOTALL)
+            
+            # Find the last complete JSON object
+            json_match = re.search(r'(\{[\s\S]*?"text"[\s\S]*?"steps"[\s\S]*?\})', ai_text)
             if json_match:
                 try:
-                    parsed = json.loads(json_match.group())
-                    return parsed
-                except:
-                    pass
+                    parsed = json.loads(json_match.group(1))
+                    if 'text' in parsed and 'steps' in parsed:
+                        return parsed
+                except Exception as e:
+                    print(f"JSON parse error: {e}")
             
-            # Try any JSON in response
-            json_match = re.search(r'\{[^{}]*\}', ai_text, re.DOTALL)
+            # Try finding any JSON with text field
+            json_match = re.search(r'\{[^}]*"text"[^}]*\}', ai_text)
             if json_match:
                 try:
                     parsed = json.loads(json_match.group())
