@@ -4,8 +4,8 @@
  */
 
 const API = {
-    // Backend URL (cloudflare tunnel - works on all devices)
-    BACKEND_URL: 'https://olive-instructors-barrier-soa.trycloudflare.com',
+    // Backend URL - PythonAnywhere (permanent, works everywhere)
+    BACKEND_URL: 'https://PSC03.pythonanywhere.com',
     _activeUrl: null,
 
     // Get backend URL
