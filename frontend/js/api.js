@@ -3,13 +3,44 @@
  * Uses AI when online + backend available, falls back to offline FAQ
  */
 
-// BACKEND CONFIGURATION:
-// - For LOCAL development: keep as 'http://localhost:5001'
-// - For PUBLIC deployment: change to your deployed backend URL
-// Example: const BACKEND_URL = 'https://your-backend-url.com';
-const BACKEND_URL = 'https://amanda-numerous-pichunter-maintains.trycloudflare.com';
-
 const API = {
+    // Backend URLs
+    LOCAL_URL: 'http://localhost:5001',
+    CLOUD_URL: 'https://PSC03.pythonanywhere.com',
+    _activeUrl: null,
+
+    // Auto-detect: try local first, fall back to cloud
+    async _getBaseUrl() {
+        if (this._activeUrl) return this._activeUrl;
+        
+        // Try local first (best for Gemini)
+        try {
+            const res = await fetch(`${this.LOCAL_URL}/api/health`, { signal: AbortSignal.timeout(1000) });
+            if (res.ok) { 
+                this._activeUrl = this.LOCAL_URL; 
+                console.log('🟢 Using LOCAL backend'); 
+                return this.LOCAL_URL; 
+            }
+        } catch (e) {
+            // Local not available
+        }
+        
+        // Try cloud
+        try {
+            const res = await fetch(`${this.CLOUD_URL}/api/health`, { signal: AbortSignal.timeout(2000) });
+            if (res.ok) { 
+                this._activeUrl = this.CLOUD_URL; 
+                console.log('☁️ Using CLOUD backend'); 
+                return this.CLOUD_URL; 
+            }
+        } catch (e) {
+            // Cloud not available
+        }
+
+        console.log('❌ No backend available');
+        return null;
+    },
+
     async sendQuery(query, language = 'hi', conversationHistory = []) {
         // Get user location if available
         let lat = null, lon = null;
@@ -18,15 +49,10 @@ const API = {
             lon = window.userLocation.lon;
         }
         
-        // Determine backend URL
-        const backendBase = BACKEND_URL || 'http://localhost:5001';
-        
-        // Check if online and backend is available
         if (navigator.onLine) {
-            try {
-                const res = await fetch(`${backendBase}/api/health`, { signal: AbortSignal.timeout(1500) });
-                if (res.ok) {
-                    console.log('Using AI Backend');
+            const backendBase = await this._getBaseUrl();
+            if (backendBase) {
+                try {
                     const response = await fetch(`${backendBase}/api/query`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -40,24 +66,21 @@ const API = {
                     });
                     if (response.ok) {
                         const result = await response.json();
-                        console.log('📥 Backend response:', result);
-                        if (result.success) return result;
-                        if (result.data) return result;
+                        // If cloud returned an error string, it might be the Gemini block on free PythonAnywhere
+                        if (result.success || result.data) return result;
                     }
+                } catch (e) {
+                    console.log('AI Query failed, falling back to offline FAQ');
                 }
-            } catch (e) {
-                console.log('📴 AI not available, using offline FAQ');
             }
-        } else {
-            console.log('📴 Offline - using FAQ');
         }
         
-        // Fallback to offline FAQ (with reduced history for context)
+        // Fallback to offline FAQ
         return this._getOfflineResponse(query, language, conversationHistory.slice(-2));
     },
 
     _getOfflineResponse(query, language) {
-        const faqList = OFFLINE_FAQ[language] || OFFLINE_FAQ['en'];
+        const faqList = typeof OFFLINE_FAQ !== "undefined" ? (OFFLINE_FAQ[language] || OFFLINE_FAQ['en']) : [];
         const queryLower = query.toLowerCase();
         
         for (const faq of faqList) {
@@ -96,18 +119,18 @@ const API = {
 
     async getWeather(lat, lon, language = 'hi') {
         if (navigator.onLine) {
-            try {
-                const res = await fetch('http://localhost:5001/api/health', { signal: AbortSignal.timeout(1500) });
-                if (res.ok) {
-                    const response = await fetch(`http://localhost:5001/api/weather?lat=${lat}&lon=${lon}&language=${language}`);
+            const backendBase = await this._getBaseUrl();
+            if (backendBase) {
+                try {
+                    const response = await fetch(`${backendBase}/api/weather?lat=${lat}&lon=${lon}&language=${language}`);
                     if (response.ok) {
                         const data = await response.json();
                         localStorage.setItem('kisaanmitra_weather', JSON.stringify({ data, timestamp: Date.now() }));
                         return data;
                     }
+                } catch (e) {
+                    console.log('Weather API error:', e);
                 }
-            } catch (e) {
-                console.log('Weather API error:', e);
             }
         }
         

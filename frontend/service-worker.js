@@ -2,7 +2,7 @@
  * KisaanMitra - Service Worker v11 (Simple)
  * Basic caching for GitHub Pages
  */
-const CACHE_NAME = 'kisaanmitra-v11';
+const CACHE_NAME = 'kisaanmitra-v6';
 
 self.addEventListener('install', event => {
     self.skipWaiting();
