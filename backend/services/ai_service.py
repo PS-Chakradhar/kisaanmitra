@@ -32,18 +32,17 @@ def get_ollama_response(query: str, language: str, history: list = None) -> dict
             context += f"- {msg['role'].capitalize()}: {msg['content']}\n"
         context += "\nIMPORTANT: The farmer's current question is a FOLLOW-UP to the conversation above. Use the chat history to understand the context!\n"
     
-    prompt = f"""You are an experienced Indian agricultural expert helping farmers. {context}
+    prompt = f"""{Config.SYSTEM_PROMPT_OLLAMA}
+{context}
 
-Current question from farmer in {lang_name}: {query}
+CRITICAL: You MUST respond in {lang_name} language ONLY.
+If '{lang_name}' is 'English', your entire JSON output (including the "text" and "steps" fields) MUST be in English.
+If '{lang_name}' is 'Hindi', your entire JSON output MUST be in Hindi.
+If a different language is specified, you must translate everything to that exact language.
 
-Instructions:
-1. This is a follow-up question - use the chat history above to understand context
-2. If farmer asks "why" or "how" or "details", elaborate on your previous answer
-3. Give specific, actionable advice
-4. Respond in {lang_name} language
-
-Respond in this JSON format:
-{{"text": "your answer here", "type": "disease/weather/price/general", "steps": ["step1", "step2", "step3"]}}"""
+Current question from farmer:
+"{query}"
+"""
 
     try:
         response = requests.post(
