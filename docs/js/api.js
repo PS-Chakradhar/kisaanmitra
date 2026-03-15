@@ -50,6 +50,7 @@ const API = {
                     });
                     if (response.ok) {
                         const result = await response.json();
+                        console.log('📡 Backend response:', result);
                         // If cloud returned an error string, it might be the Gemini block on free PythonAnywhere
                         if (result.success || result.data) return result;
                     }

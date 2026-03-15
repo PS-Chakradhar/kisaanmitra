@@ -357,6 +357,7 @@ async function processVoiceQuery(query) {
     console.log('📤 History:', conversationHistory);
     const result = await API.sendQuery(query, window.currentLanguage, conversationHistory);
     showLoading(false);
+    console.log('📬 App received result:', result);
     if (result && result.data) {
         addResponseCard(result.data);
         conversationHistory.push({ role: 'user', content: query });
