@@ -56,8 +56,18 @@ Be direct, no filler. Under 80 words."""
             result = response.json()
             ai_text = result.get('result', {}).get('response', '').strip()
             
-            # Try to find and parse JSON in the response
+            # Try to find JSON at the end of response
             import re
+            # Look for JSON object at the end
+            json_match = re.search(r'\{\s*["\']text["\']\s*:[^}]+\}\s*$', ai_text, re.DOTALL)
+            if json_match:
+                try:
+                    parsed = json.loads(json_match.group())
+                    return parsed
+                except:
+                    pass
+            
+            # Try any JSON in response
             json_match = re.search(r'\{[^{}]*\}', ai_text, re.DOTALL)
             if json_match:
                 try:
@@ -66,7 +76,7 @@ Be direct, no filler. Under 80 words."""
                 except:
                     pass
             
-            # Return as text if not JSON
+            # Return as text if no JSON found
             return {
                 'text': ai_text[:500],
                 'type': 'general',
