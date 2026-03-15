@@ -2,7 +2,7 @@
  * KisaanMitra - Service Worker v12 (Aggressive Cache Clear)
  * Forces clients to bypass the old cached API file
  */
-const CACHE_NAME = 'kisaanmitra-v14';
+const CACHE_NAME = 'kisaanmitra-v15';
 
 self.addEventListener('install', event => {
     // Force immediate installation
