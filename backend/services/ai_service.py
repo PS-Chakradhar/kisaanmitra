@@ -118,18 +118,40 @@ Current question from farmer:
         return None
 
 
-def get_gemini_response(query: str, language: str) -> dict:
+def get_gemini_response(query: str, language: str, history: list = None) -> dict:
     """Get response from Google Gemini API as fallback."""
     if not Config.GEMINI_API_KEY:
         return None
+    
+    if history is None:
+        history = []
         
     try:
         lang_name = Config.LANGUAGES.get(language, {}).get('name', 'Hindi')
-        prompt = f"""
-Please respond in {lang_name} language ONLY.
-A farmer is asking: "{query}"
+        
+        # Build conversation context from history
+        context = ""
+        if history:
+            context = "\n\nCHAT HISTORY (Farmer's previous questions and your answers):\n"
+            for msg in history[-4:]:
+                context += f"- {msg['role'].capitalize()}: {msg['content']}\n"
+            context += "\nIMPORTANT: The farmer's current question is a FOLLOW-UP. Use the chat history to understand the context!\n"
+        
+        prompt = f"""You are KisaanMitra, an agricultural assistant for Indian farmers.
+
+{context}
+CRITICAL: You must respond in {lang_name} language ONLY.
+
+Farmer's current question: "{query}"
+
 Provide practical farming advice in JSON format:
 {{"text": "...", "type": "...", "crop": "...", "steps": ["...", "..."], "emoji": "..."}}
+
+Rules:
+1. Be direct - no conversational filler
+2. Give 3 specific actionable steps
+3. Keep under 100 words
+4. If asked about prices, say "Please tap Prices button for live Mandi rates"
 """
         
         response = gemini_model.generate_content(prompt)
@@ -295,7 +317,7 @@ def get_agricultural_advice(query: str, language: str = 'hi', history: list = No
     
     # Fallback to Gemini if available
     if Config.USE_GEMINI_FALLBACK and Config.GEMINI_API_KEY:
-        result = get_gemini_response(query, language)
+        result = get_gemini_response(query, language, history)
         if result:
             return {
                 'success': True,
