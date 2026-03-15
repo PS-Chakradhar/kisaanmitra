@@ -5,7 +5,7 @@
 
 const API = {
     // Backend URL (cloudflare tunnel - works on all devices)
-    BACKEND_URL: 'https://rest-typical-threatened-beaches.trycloudflare.com',
+    BACKEND_URL: 'https://laura-centres-ties-asin.trycloudflare.com',
     _activeUrl: null,
 
     // Get backend URL
