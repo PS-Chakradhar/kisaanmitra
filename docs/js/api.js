@@ -5,7 +5,7 @@
 
 const API = {
     // Backend URL (cloudflare tunnel - works on all devices)
-    BACKEND_URL: 'https://easier-port-sharon-earliest.trycloudflare.com',
+    BACKEND_URL: 'https://rest-typical-threatened-beaches.trycloudflare.com',
     _activeUrl: null,
 
     // Get backend URL
